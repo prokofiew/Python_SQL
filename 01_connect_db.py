@@ -14,7 +14,7 @@ for i in mycurson1:
 	print(i)
 
 
-print('\n--------- connecting to databse and printing all from employees db--------')
+print('\n--------- connecting to database and printing all from employees db--------')
 # getting from particular database
 mydb2 = mysql.connector.connect(host="localhost", user="filip", passwd="1234", database="sql_course")
 
