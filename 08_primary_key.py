@@ -13,8 +13,5 @@ for item in items:
 	print(f"{item[0]}. {item[1]} {item[2]} {item[3]}")
 
 
-
-
-
 connection.commit()
 connection.close()
