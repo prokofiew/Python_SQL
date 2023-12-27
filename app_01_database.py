@@ -34,7 +34,7 @@ def delete_by_name(first):
 	connection = sqlite3.connect('customer.db')
 	cursor = connection.cursor()
 
-	cursor.execute("DELETE FROM customers WHERE first_name = (?)", first)
+	cursor.execute("DELETE FROM customers WHERE first_name = ?", (first,))
 
 	connection.commit()
 	connection.close()
