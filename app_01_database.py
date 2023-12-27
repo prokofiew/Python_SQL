@@ -33,7 +33,8 @@ def add_one(first, last, email):
 def delete_by_name(first):
 	connection = sqlite3.connect('customer.db')
 	cursor = connection.cursor()
-
+	# first has to be a tuple to be seen as a single argument
+	# if it wouldn't be a tuple it would be recognized as 5 arguments
 	cursor.execute("DELETE FROM customers WHERE first_name = ?", (first,))
 
 	connection.commit()
