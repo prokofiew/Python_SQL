@@ -12,9 +12,19 @@ MENU_PROMPT = """-- Coffe Bean App --
 
  Your selection:"""
 
+DB_USER_INPUT = """ -- PICK DB --
+
+ Pick database use want to use:
+ - coffee
+ \n"""
+
 
 def menu():
-    connection = db.connect()
+
+    user_db_input = input(DB_USER_INPUT)
+    database_name = user_db_input + ".db"
+    print(database_name)
+    connection = db.connect(database_name)
     db.create_tables(connection)
 
     while (user_input := input(MENU_PROMPT)) != "5":

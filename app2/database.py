@@ -1,6 +1,5 @@
 import sqlite3
 
-
 CREATE_BEANS_TABLE = """
 			CREATE TABLE IF NOT EXISTS beans (
 			id INTEGER PRIMARY KEY,
@@ -21,36 +20,37 @@ GET_BEST_PREPARATION_FOR_BEAN = """
 			LIMIT 1;
 			"""
 
-def connect():
-	return sqlite3.connect('coffee.db')
+
+def connect(db_name):
+    return sqlite3.connect(db_name)
+
+
+def close_connection(connection):
+    return connection.close()
 
 
 def create_tables(connection):
-	with connection:
-		connection.execute(CREATE_BEANS_TABLE)
+    with connection:
+        connection.execute(CREATE_BEANS_TABLE)
 
 
 def add_bean(connection, name, method, rating):
-	with connection:
-		connection.execute(INSERT_BEAN, (name, method, rating))
+    with connection:
+        connection.execute(INSERT_BEAN, (name, method, rating))
 
 
 # python functions have to return something other way on default
 # they return None. Thats why return and fetchall()
 def get_all_beans(connection):
-	with connection:
-		return connection.execute(GET_ALL_BEANS).fetchall()
+    with connection:
+        return connection.execute(GET_ALL_BEANS).fetchall()
 
 
 def get_beans_by_name(connection, name):
-	with connection:
-		return connection.execute(GET_BEANS_BY_NAME, (name,)).fetchall()
+    with connection:
+        return connection.execute(GET_BEANS_BY_NAME, (name,)).fetchall()
 
 
 def get_best_preparation_for_bean(connection, name):
-	with connection:
-		return connection.execute(GET_BEST_PREPARATION_FOR_BEAN, (name,)).fechone()
-
-
-
-
+    with connection:
+        return connection.execute(GET_BEST_PREPARATION_FOR_BEAN, (name,)).fechone()
